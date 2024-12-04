@@ -64,11 +64,13 @@ The script performs the following tasks:
 .\CreateAndPushRepos.ps1
 
 
-The script will:
+
+
+**The script will**:
 1.Create repositories in the specified GitHub organization.
 2.Clone the existing repositories.
 3.Push the contents to the newly created repositories.
 4.Add the workflow file to each repository.
 
-Verify the Repositories
+### 5. Verify the Repositories
 After the script completes, visit the GitHub organization page to verify that the repositories have been created successfully, and the workflow file (semgrep.yml) has been added to the .github/workflows directory.
