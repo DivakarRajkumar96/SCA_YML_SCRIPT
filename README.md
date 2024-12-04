@@ -49,7 +49,7 @@ Before running the script, ensure you have the following prerequisites:
 2. Run the script:
 
 ```powershell
-.\CreateAndPushRepos.ps1
+.\RepoCloneScript.ps1
 ```
 
 ### 5. Verify the Repositories
