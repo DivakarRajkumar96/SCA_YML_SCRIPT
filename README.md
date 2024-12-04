@@ -12,18 +12,6 @@ Before running the script, ensure you have the following prerequisites:
 4. **Excel File** containing the list of repositories to be cloned and migrated. The Excel file must have at least two columns: `Repo Name` and `Repo URL`.
 5. **Workflow YAML File** (`semgrep.yml`) that defines the GitHub Actions workflow to be added to the new repositories.
 
-## Script Overview
-
-The script performs the following tasks:
-
-1. Reads repository data from an Excel file.
-2. For each repository:
-   - Creates a new repository in the specified GitHub organization.
-   - Clones the existing repository from the provided URL.
-   - Pushes the contents to the newly created repository.
-   - Copies the workflow YAML file (`semgrep.yml`) into the `.github/workflows` directory of the new repository.
-3. Cleans up local cloned repositories after the migration.
-
 ## Usage
 
 ### 1. Set Up Your Environment
@@ -62,15 +50,21 @@ The script performs the following tasks:
 
 ```powershell
 .\CreateAndPushRepos.ps1
-
-
-
-
-**The script will**:
-1.Create repositories in the specified GitHub organization.
-2.Clone the existing repositories.
-3.Push the contents to the newly created repositories.
-4.Add the workflow file to each repository.
+```
 
 ### 5. Verify the Repositories
-After the script completes, visit the GitHub organization page to verify that the repositories have been created successfully, and the workflow file (semgrep.yml) has been added to the .github/workflows directory.
+
+After the script completes, visit the GitHub organization page to verify that the repositories have been created successfully, and the workflow file (`semgrep.yml`) has been added to the `.github/workflows` directory.
+
+You should see:
+- A list of newly created repositories in your GitHub organization.
+- The `semgrep.yml` file located in the `.github/workflows` directory in each repository.
+
+## What the Script Does
+
+The script will:
+
+1. **Create repositories in the specified GitHub organization**: The script uses the GitHub API to create a new repository for each entry in the provided Excel file.
+2. **Clone the existing repositories**: The script clones each repository listed in the Excel file from the specified URL to a temporary local directory using Git.
+3. **Push the contents to the newly created repositories**: After cloning the existing repositories, the script pushes the contents to the newly created repositories in your GitHub organization.
+4. **Add the workflow file to each repository**: The script copies a specified GitHub Actions workflow YAML file (`semgrep.yml`) into the `.github/workflows` directory of each newly created repository.
